@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACHIND PC</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+   
+    
+    
+    
+    <link rel="icon" type="image/x-icon" href="https://static.tvtropes.org/pmwiki/pub/images/abcb6534_7913_4eb1_a7a5_62b081ebc628.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-DdN2LJmB8oP3pHgyd8E6v4ZPbX5QW7Wd5vXrQ9PfzXQDQz7+HvXWfWQfWQfWQfWQf" crossorigin="anonymous">
+</head>
+<body>
+    <header class="bg-info fixed-top">
+        <div class="container-fluid">
+            <div class="row text-white">
+                
+                <div class="col-8 col-md-6 p-2">
+                    
+                    <h2 class="m-0 animated-name">SACHIND</h2>
+                </div>
+                
+                <div class="col-4 col-md-6 my-auto">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        
+                        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" 
+                            data-target="#navbarSupportedContent" 
+                            aria-controls="navbarSupportedContent" 
+                            aria-expanded="false" 
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link text-white" href="#home-section">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#service-section">Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#experience-section">Experience</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#contact-section">Contact me</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <style>
+        
+        .animated-name {
+            font-family: 'Roboto', sans-serif; 
+            font-weight: 300; 
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            display: inline-block;
+            overflow: hidden; 
+            white-space: nowrap;
+            letter-spacing: 2px;
+        }
+    
+        
+        .animated-name span {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            animation: slideIn 0.8s ease forwards;
+        }
+    
+       
+        .animated-name span:nth-child(1) { animation-delay: 0s; }
+        .animated-name span:nth-child(2) { animation-delay: 0.1s; }
+        .animated-name span:nth-child(3) { animation-delay: 0.2s; }
+        .animated-name span:nth-child(4) { animation-delay: 0.3s; }
+        .animated-name span:nth-child(5) { animation-delay: 0.4s; }
+        .animated-name span:nth-child(6) { animation-delay: 0.5s; }
+        .animated-name span:nth-child(7) { animation-delay: 0.6s; }
+        .animated-name span:nth-child(8) { animation-delay: 0.7s; }
+        .animated-name span:nth-child(9) { animation-delay: 0.8s; }
+    
+        
+        @keyframes slideIn {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+    
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedName = document.querySelector('.animated-name');
+            const nameText = animatedName.textContent;
+            animatedName.innerHTML = '';
+            [...nameText].forEach(letter => {
+                const span = document.createElement('span');
+                span.textContent = letter;
+                animatedName.appendChild(span);
+            });
+        });
+    </script>
+    
+    
+    
+    
+    
+    <section id="home-section" style="padding-top: 7em; position: relative;">
+        
+        <div class="gradient-background"></div>
+        
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f79ae93d-680c-44c2-9718-0f2a70b59613/df8ftht-5df05a88-df70-43f6-9a9f-5102de9c7652.png/v1/fill/w_1280,h_720/rick_sanchez__rick_and_morty__render_by_ty50ntheskeleton_df8ftht-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvZjc5YWU5M2QtNjgwYy00NGMyLTk3MTgtMGYyYTcwYjU5NjEzXC9kZjhmdGh0LTVkZjA1YTg4LWRmNzAtNDNmNi05YTlmLTUxMDJkZTljNzY1Mi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.XL_cfijk5RSiFvbnkOnL9pUzZfnSwF4cKiTiIyxwxbk" alt="image not found" class="img-fluid rounded-circle">
+                </div>
+                <div class="col-md-6">
+                    <h4 class="pt-4">Software Engineer | AI/ML Engineer | UI/UX Designer | Cyber Security Analyst | HAM Radio Operator | Data Analyst | Astronomer | VFX Artist | IoT Developer</h4>
+                    <br>
+                    <p><i>"There comes a moment when your old life collapses under the weight of its own illusions, shattering into pieces you can no longer mend.
+                       It is only through the wreckage of what once was that the foundation for what will be is laid. Destruction is not the end, but the violent birth 
+                       of something truer, forged in the fires of chaos and loss."</i><br><i><b>-Nobody</b></i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        
+        .gradient-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
+            background-size: 400% 400%;
+            animation: gradientShift 4s ease infinite;
+            z-index: -1; 
+        }
+    
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+    
+
+
+    <section class="bg-light py-5" id="service-section">
+        <div class="container-fluid">
+            <h1 class="text-center mb-5">Services</h1>
+            <div class="row g-4">
+                <!-- Service Tile 1 -->
+                <div class="col-12 col-sm-6 col-lg-4 mt-3 service-tile">
+                    <div class="card text-center p-4 h-100">
+                        <i class="fas fa-code display-1 text-info icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Software Development</h5>
+                            <p class="card-text">Building robust and scalable applications tailored to meet client needs.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Tile 2 -->
+                <div class="col-12 col-sm-6 col-lg-4 mt-3 service-tile">
+                    <div class="card text-center p-4 h-100">
+                        <i class="fas fa-lock display-1 text-info icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Cyber Security</h5>
+                            <p class="card-text">Implementing advanced security measures to protect digital assets.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Tile 3 -->
+                <div class="col-12 col-sm-6 col-lg-4 mt-3 service-tile">
+                    <div class="card text-center p-4 h-100">
+                        <i class="fas fa-chart-line display-1 text-info icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Data Analytics</h5>
+                            <p class="card-text">Transforming raw data into actionable insights for decision-making.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Tile 4 -->
+                <div class="col-12 col-sm-6 col-lg-4 mt-3 service-tile">
+                    <div class="card text-center p-4 h-100">
+                        <i class="fas fa-photo-film display-1 text-info icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">VFX and Animation</h5>
+                            <p class="card-text">Creating cinematic effects and animations for films and media.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Tile 5 -->
+                <div class="col-12 col-sm-6 col-lg-4 mt-3 service-tile">
+                    <div class="card text-center p-4 h-100">
+                        <i class="fas fa-cloud-arrow-up display-1 text-info icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">IoT Development</h5>
+                            <p class="card-text">Connecting devices to streamline processes and enable smart solutions.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Tile 6 -->
+                <div class="col-12 col-sm-6 col-lg-4 mt-3 service-tile">
+                    <div class="card text-center p-4 h-100">
+                        <i class="fas fa-robot display-1 text-info icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">AI/ML</h5>
+                            <p class="card-text">Leveraging AI and machine learning to automate processes and innovate.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-12 col-sm-6 col-lg-4 mt-3 service-tile">
+                    <div class="card text-center p-4 h-100">
+                        <i class="fa-solid fa-paintbrush display-1 text-info icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">UI/UX Design</h5>
+                            <p class="card-text">Creating intuitive and innovative UI/UX solutions that enhance user engagement and satisfaction.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-12 col-sm-6 col-lg-4 mt-3 service-tile">
+                    <div class="card text-center p-4 h-100">
+                        <i class="fa-solid fa-bomb display-1 text-info icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Embedded System Design</h5>
+                            <p class="card-text">Designing optimized embedded systems for seamless hardware-software integration.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-12 col-sm-6 col-lg-4 mt-3 service-tile">
+                    <div class="card text-center p-4 h-100">
+                        <i class="fa-solid fa-brain display-1 text-info icon"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Edge AI</h5>
+                            <p class="card-text">Developing efficient edge AI solutions for real-time data processing and intelligent decision-making at the device level.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        
+        .service-tile {
+            opacity: 0; 
+            transform: translateY(50px); 
+            transition: opacity 0.6s ease, transform 0.6s ease; 
+        }
+    
+        .service-tile.in-view {
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+    
+        
+        .service-tile .icon {
+            transition: color 0.6s ease, transform 0.6s ease;
+        }
+    
+        .service-tile.in-view .icon {
+            color: #2575fc; 
+            transform: scale(1.2);
+        }
+    </style>
+    
+    <script>
+        
+        const serviceTiles = document.querySelectorAll('.service-tile');
+    
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.5 
+        });
+    
+        // Observe each service tile
+        serviceTiles.forEach(tile => {
+            observer.observe(tile);
+        });
+    </script>
+    
+    <section class="milestones" id="milestones-section">
+        <div class="milestone">
+            <div class="counter" data-target="53">0</div>
+            <h2>Projects</h2>
+            <p>Completed successfully</p>
+        </div>
+        <div class="milestone">
+            <div class="counter" data-target="16">0</div>
+            <h2>Clients</h2>
+            <p>Satisfied and happy</p>
+        </div>
+        <div class="milestone">
+            <div class="counter" data-target="3">0</div>
+            <h2>Years of Experience</h2>
+            <p>In the industry</p>
+        </div>
+        <div class="milestone">
+            <div class="counter" data-target="20">0</div>
+            <h2>Technologies</h2>
+            <p>Proficient in</p>
+        </div>
+    </section>
+    
+    <style>
+        .milestones {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px 0;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            max-width: 1200px;
+            border-radius: 10px;
+            flex-wrap: wrap; 
+        }
+        .milestone {
+            text-align: center;
+            padding: 20px;
+            flex: 1 1 calc(25% - 40px); 
+            transition: transform 0.3s ease;
+        }
+        .milestone:hover {
+            transform: scale(1.1);
+        }
+        .milestone h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .milestone p {
+            font-size: 18px;
+            color: #777;
+            margin-top: 10px;
+        }
+        .counter {
+            font-size: 48px;
+            color: #007BFF;
+            font-weight: bold;
+        }
+    
+        @media (max-width: 768px) {
+            .milestone {
+                flex: 1 1 calc(50% - 40px); 
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .milestone {
+                flex: 1 1 100%; 
+            }
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const counters = document.querySelectorAll('.counter');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        const target = parseInt(entry.target.getAttribute('data-target'));
+                        let count = 0;
+    
+                        const updateCounter = () => {
+                            if (count < target) {
+                                count++;
+                                entry.target.textContent = count;
+                                setTimeout(updateCounter, 50);
+                            } else {
+                                entry.target.textContent = target;
+                            }
+                        };
+    
+                        updateCounter();
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.1 });
+    
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        });
+    </script>
+
+  
+  <section class="bg-light py-5" id="activities-section">
+    <div class="container">
+        <h1 class="text-center mb-5">Volunteer Activities</h1>
+        <div class="row g-4">
+            
+            <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                <div class="card text-center p-4 h-100 activity-card shadow-sm">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vc50d87e7Mh57Y-CPRt7ejCmP_QgdVZSkA&s" class="card-img-top" alt="Breakthrough Science Society">
+                    <div class="card-body">
+                        <h5 class="card-title">Breakthrough Science Society</h5>
+                        <p class="card-text">Dedicated to promoting scientific literacy and critical thinking in the society.</p>
+                        <a href="https://breakthroughindia.org/" target="_blank" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                <div class="card text-center p-4 h-100 activity-card shadow-sm">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTED1StQixeMW0Y4LdHHHIWhMNFa-4e8hUetw&s" class="card-img-top" alt="Solace Global">
+                    <div class="card-body">
+                        <h5 class="card-title">Solace Global</h5>
+                        <p class="card-text">Kerala based charitable trust foundation that supports children with long term illness and their families.</p>
+                        <a href="https://solaceglobal.org" target="_blank" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                <div class="card text-center p-4 h-100 activity-card shadow-sm">
+                    <img src="https://presentations.gov.in/wp-content/uploads/2020/06/National-Service-Scheme_Preview.png" class="card-img-top" alt="National Service Scheme (NSS)">
+                    <div class="card-body"><br><br>
+                        <h5 class="card-title mt-5">National Service Scheme (NSS)</h5>
+                        <p class="card-text">Engaged in community service and social welfare activities.</p>
+                        <a href="https://nss.gov.in" target="_blank" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .activity-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .activity-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+
+    
+    <section class="bg-white py-5" id="experience-section">
+        <div class="container">
+            <h1 class="text-center mb-5">Experience</h1>
+            <div class="row g-4">
+                
+                <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                    <div class="card text-center p-4 h-100">
+                        <img src="https://innovate.startupmission.in/assets/im/jpeg/logos/9.jpg" 
+                             class="card-img-top" alt="IEDC-CAS" style="height: 200px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title pt-3">IEDC-CAS</h5>
+                            <p class="card-text">Chief Technical Officer (CTO)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                    <div class="card text-center p-4 h-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWOU3_YFfADyfqFB1yPDeWPh9GOCdOnHnomw&s" 
+                             class="card-img-top" alt="TCS Ignite" style="height: 200px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title pt-3">TCS Ignite</h5>
+                            <p class="card-text">Graduate Engineering Trainee</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                    <div class="card text-center p-4 h-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWOU3_YFfADyfqFB1yPDeWPh9GOCdOnHnomw&s" 
+                             class="card-img-top" alt="TCS" style="height: 200px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title pt-3">TCS-SBI</h5>
+                            <p class="card-text">Assistant System Engineer, Data Analyst</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="p-5 bg-light" id="contact-section">
+        <div class="container" style="max-width: 900px;">
+            
+            <h1 class="text-center mb-4 display-4 fw-bold" style="font-family: 'Roboto', sans-serif;">Contact Me</h1>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    
+                    <form id="contact-form" class="contact-form shadow-lg p-4 rounded bg-white" action="https://script.google.com/macros/s/AKfycbxHdh-g6UwZ-_uWj5viDCYfVCj8hFbo1hjGRIXhI8912kNWgR5f5Rv_yRM6u6-jQRXeyQ/exec" method="POST">
+                        <!-- Name -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-semibold">Your Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label fw-semibold">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="mobile" class="form-label fw-semibold">Mobile Number</label>
+                                <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label fw-semibold">Your Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Don't worry, I’ll pretend to care about this." required></textarea>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Submit</button>
+                        </div>
+                       
+                        <div id="success-message" class="text-center mt-3 text-success" style="display: none;">
+                            Thank you! Your message has been sent faster than a cat chasing a laser pointer.
+                        </div>
+                    </form>
+    
+                    <script>
+                        document.getElementById("contact-form").addEventListener("submit", function(event) {
+                            event.preventDefault(); 
+    
+                            const form = event.target;
+                            const formData = new FormData(form);
+    
+                            fetch(form.action, {
+                                method: "POST",
+                                body: formData
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    
+                                    document.getElementById("success-message").style.display = "block";
+                                    form.reset(); 
+                                } else {
+                                    alert("Something went wrong. Please try again.");
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Error:", error);
+                                alert("An error occurred. Please try again.");
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Additional Styles -->
+    <style>
+        #contact-section {
+            font-family: 'Roboto', sans-serif;
+        }
+    
+        #contact-section h1 {
+            color: #007bff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+    
+        .contact-form {
+            border-radius: 12px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+    
+        .contact-form input,
+        .contact-form textarea {
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+    
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+    
+        /* Fade-In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    
+    
+
+    <footer class="bg-info text-white text-center py-3">
+        <div class="container">
+            <a href="https://www.instagram.com/s4chind/" class="fab fa-instagram text-white mx-2"></a>
+            <a href="https://www.linkedin.com/in/sachind-pc-01051a198/" class="fab fa-linkedin text-white mx-2"></a>
+            <p class="mt-3">Copyright © 2002 SACHIND PC PRIVATE LIMITED</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c0806fb934.js" crossorigin="anonymous"></script>
+</body>
+</html>
