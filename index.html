@@ -169,51 +169,6 @@
         }
     </style>
    
-   <section class="spline-section">
-    <spline-viewer url="https://prod.spline.design/0psdcft4EmnpL5h0/scene.splinecode" style="width: 100%; height: 100%;"></spline-viewer>
-    <div class="white-background"></div>
-  </section>
-  
-  <!-- Spline Viewer Script -->
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.54/build/spline-viewer.js"></script>
-  
-  <style>
-    /* Section styling for the spline viewer */
-    .spline-section {
-      width: 100%;
-      height: 100vh; /* Full viewport height */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f8f9fa; /* bg-light equivalent in CSS */
-      position: relative;
-      overflow: hidden;
-    }
-  
-    /* White background to cover the bottom part of the viewer */
-    .white-background {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 10vh; /* Adjust the height as needed */
-      background-color: #f8f9fa; /* Same as bg-light color */
-      z-index: 2; /* Ensure the white background is above the Spline viewer */
-    }
-  
-    /* Hide "Built with Spline" content */
-    spline-viewer {
-      position: relative;
-      z-index: 1; /* Ensures the viewer content is behind the white background */
-    }
-  
-    /* Responsive design adjustments */
-    @media (max-width: 768px) {
-      .spline-section {
-        height: 100vh;
-      }
-    }
-  </style>
   
 
     <section class="bg-light py-5" id="service-section">
