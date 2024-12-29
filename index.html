@@ -168,8 +168,53 @@
             }
         }
     </style>
-    
-
+   
+   <section class="spline-section">
+    <spline-viewer url="https://prod.spline.design/0psdcft4EmnpL5h0/scene.splinecode" style="width: 100%; height: 100%;"></spline-viewer>
+    <div class="white-background"></div>
+  </section>
+  
+  <!-- Spline Viewer Script -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.54/build/spline-viewer.js"></script>
+  
+  <style>
+    /* Section styling for the spline viewer */
+    .spline-section {
+      width: 100%;
+      height: 100vh; /* Full viewport height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f9fa; /* bg-light equivalent in CSS */
+      position: relative;
+      overflow: hidden;
+    }
+  
+    /* White background to cover the bottom part of the viewer */
+    .white-background {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 10vh; /* Adjust the height as needed */
+      background-color: #f8f9fa; /* Same as bg-light color */
+      z-index: 2; /* Ensure the white background is above the Spline viewer */
+    }
+  
+    /* Hide "Built with Spline" content */
+    spline-viewer {
+      position: relative;
+      z-index: 1; /* Ensures the viewer content is behind the white background */
+    }
+  
+    /* Responsive design adjustments */
+    @media (max-width: 768px) {
+      .spline-section {
+        height: 100vh;
+      }
+    }
+  </style>
+  
 
     <section class="bg-light py-5" id="service-section">
         <div class="container-fluid">
@@ -429,7 +474,7 @@
             
             <div class="col-12 col-sm-6 col-lg-4 mt-3">
                 <div class="card text-center p-4 h-100 activity-card shadow-sm">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vc50d87e7Mh57Y-CPRt7ejCmP_QgdVZSkA&s" class="card-img-top" alt="Breakthrough Science Society">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Vc50d87e7Mh57Y-CPRt7ejCmP_QgdVZSkA&s" class="card-img-top" alt="Breakthrough Science Society" style="width: 80%; height: auto; margin: 0 auto;">
                     <div class="card-body">
                         <h5 class="card-title">Breakthrough Science Society</h5>
                         <p class="card-text">Dedicated to promoting scientific literacy and critical thinking in the society.</p>
@@ -438,9 +483,10 @@
                 </div>
             </div>
             
+            
             <div class="col-12 col-sm-6 col-lg-4 mt-3">
                 <div class="card text-center p-4 h-100 activity-card shadow-sm">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTED1StQixeMW0Y4LdHHHIWhMNFa-4e8hUetw&s" class="card-img-top" alt="Solace Global">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTED1StQixeMW0Y4LdHHHIWhMNFa-4e8hUetw&s" class="card-img-top" alt="Solace Global" style="width: 80%; height: auto; margin: 0 auto;">
                     <div class="card-body">
                         <h5 class="card-title">Solace Global</h5>
                         <p class="card-text">Kerala based charitable trust foundation that supports children with long term illness and their families.</p>
@@ -449,10 +495,11 @@
                 </div>
             </div>
             
+            
             <div class="col-12 col-sm-6 col-lg-4 mt-3">
                 <div class="card text-center p-4 h-100 activity-card shadow-sm">
                     <img src="https://presentations.gov.in/wp-content/uploads/2020/06/National-Service-Scheme_Preview.png" class="card-img-top" alt="National Service Scheme (NSS)">
-                    <div class="card-body"><br><br>
+                    <div class="card-body">
                         <h5 class="card-title mt-5">National Service Scheme (NSS)</h5>
                         <p class="card-text">Engaged in community service and social welfare activities.</p>
                         <a href="https://nss.gov.in" target="_blank" class="btn btn-primary">Learn More</a>
@@ -518,10 +565,10 @@
 
     <section class="time-clock-section position-relative text-center" style="height: 100vh; background: url('image.jpg') no-repeat center center/cover;">
         <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(.5px);"></div>
-      
+        
         <div class="glass-box position-absolute top-50 start-50 translate-middle" 
-             style="padding: 40px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(2px); border-radius: 15px; border: 1px solid rgba(255, 0, 0, 0.6); box-shadow: 0 10px 30px rgba(255, 0, 0, 0.573); width: 80%; height: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; animation: borderGlow 3s infinite alternate;">
-          <h2 class="destiny-text text-white mb-3" style="font-size: 1.5rem; font-family: 'Orbitron', sans-serif;">DESTINY AWAITS...!?</h2>
+             style="padding: 40px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(2px); border-radius: 15px; border: 1px solid rgba(255, 0, 0, 0.6); box-shadow: 0 10px 30px rgba(255, 0, 0, 0.573); width: 80%; height: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; animation: borderGlow 3s infinite alternate; overflow: hidden;">
+          <h2 class="destiny-text text-white mb-3" style="font-size: 1.5rem; font-family: 'Orbitron', sans-serif;">DESTINY AWAITS!?</h2>
       
           <div class="time-display d-flex justify-content-center align-items-center">
             <div class="time-unit">
@@ -575,11 +622,55 @@
         // Update the clock every second
         setInterval(updateClock, 1000);
         updateClock(); // Initialize immediately
+      
+        // Bubble generation inside the glass box
+        const glassBox = document.querySelector('.glass-box');
+      
+        function createBubble() {
+          const bubble = document.createElement('div');
+          bubble.classList.add('bubble');
+          bubble.style.left = Math.random() * 100 + '%';
+          bubble.style.animationDuration = Math.random() * 4 + 2 + 's'; // Glass-like slower movement
+          bubble.style.width = bubble.style.height = Math.random() * 10 + 5 + 'px'; // Smaller bubbles
+          glassBox.appendChild(bubble);
+      
+          setTimeout(() => {
+            bubble.remove();
+          }, 6000);
+        }
+      
+        setInterval(createBubble, 150); // Steady bubble generation
       </script>
       
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap'); /* Futuristic font */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap'); /* Time font */
+      
+        .bubble {
+          position: absolute;
+          bottom: 0;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+          opacity: 0.8;
+          animation: float 6s infinite ease-in-out;
+          pointer-events: none; /* Prevents interaction with the bubbles */
+        }
+      
+        @keyframes float {
+          0% {
+            transform: translateY(0) scale(1);
+            opacity: 0.8;
+          }
+          50% {
+            opacity: 1;
+            transform: translateY(-150px) scale(1.1); /* Slightly enlarges the bubbles mid-way */
+          }
+          100% {
+            transform: translateY(-300px) scale(1);
+            opacity: 0;
+          }
+        }
       
         .time-clock-section {
           display: flex;
@@ -615,6 +706,7 @@
           justify-content: center;
           align-items: center;
           animation: borderGlow 3s infinite alternate;
+          overflow: hidden; /* Confines bubbles within this box */
         }
       
         .destiny-text {
@@ -704,11 +796,8 @@
           }
         }
       </style>
-
-
-
-    
-
+      
+      
     <section class="p-5 bg-light" id="contact-section">
         <div class="container" style="max-width: 900px;">
             
