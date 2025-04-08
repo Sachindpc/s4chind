@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SACHIND A.I V.3.2</title>
+    <title>SACHIND A.I | V.3.2</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
@@ -13,22 +13,21 @@
       body {
         margin: 0;
         padding: 0;
-        overflow: hidden;
         background: black;
         color: #00ffea;
         font-family: 'Courier New', Courier, monospace;
       }
 
       .chat-container {
-        max-width: 100%;
-        height: 100vh;
+        max-width: 800px;
+        height: 90vh;
+        margin: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding: 10px;
         background: rgba(10, 10, 20, 0.9);
-        border-radius: 0;
-        box-shadow: none;
+        border-radius: 8px;
       }
 
       .message {
@@ -115,29 +114,30 @@
   </head>
   <body>
     <div class="sci-fi-bg"></div>
-    <div class="container-fluid chat-container">
-      <h4 class="text-center mb-2">SACHIND A.I V-shammi-3.2</h4>
+    <div class="container chat-container">
+      <h4 class="text-center mb-2">SACHIND AI V shammi 3.2</h4>
       <div id="response"></div>
       <div id="typing-indicator" class="typing-indicator" style="display: none;">
         SACHIND AI is cooking up something...
       </div>
       <div>
-        <div class="form-group mt-2">
+        <div class="form-group mt-2 d-flex">
           <input
             type="text"
-            class="form-control"
+            class="form-control mr-2"
             id="userInput"
-            placeholder="Type something stupid......"
+            placeholder="Type something stupid..."
+            onkeydown="if(event.key === 'Enter') sendMessage()"
           />
+          <button class="btn" onclick="sendMessage()">Send</button>
         </div>
-        <button class="btn btn-outline-info btn-block" onclick="sendMessage()">Send</button>
       </div>
     </div>
 
     <script>
       async function sendMessage() {
         const inputField = document.getElementById('userInput');
-        const input = inputField.value;
+        const input = inputField.value.trim();
         const responseDiv = document.getElementById('response');
         const typingIndicator = document.getElementById('typing-indicator');
 
@@ -156,7 +156,7 @@
           const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
             headers: {
-              Authorization: 'Bearer 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',
+              Authorization: 'Bearer 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',
               'HTTP-Referer': 'sachind.life/sachindai2.html',
               'X-Title': 'sachind',
               'Content-Type': 'application/json',
