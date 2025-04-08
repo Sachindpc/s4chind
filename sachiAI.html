@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SACHIND AI V shammi 3.2</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: black;
+        color: #00ffea;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .chat-container {
+        max-width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        background: rgba(10, 10, 20, 0.9);
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .message {
+        margin-bottom: 10px;
+        padding: 10px 15px;
+        border-radius: 10px;
+        max-width: 80%;
+        word-wrap: break-word;
+        clear: both;
+      }
+
+      .user {
+        background-color: #002b36;
+        float: right;
+        text-align: right;
+      }
+
+      .ai {
+        background-color: #003b46;
+        float: left;
+        text-align: left;
+      }
+
+      #response {
+        flex: 1;
+        overflow-y: auto;
+        margin-top: 10px;
+        padding-bottom: 10px;
+        position: relative;
+      }
+
+      .typing-indicator {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: #00ffaa;
+        font-style: italic;
+        margin: 10px 0;
+        float: left;
+        clear: both;
+        animation: blink 1s steps(1) infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .form-group input {
+        background-color: #111;
+        border: 1px solid #00ffea;
+        color: #00ffea;
+      }
+
+      .btn {
+        background-color: transparent;
+        border: 1px solid #00ffea;
+        color: #00ffea;
+      }
+
+      .btn:hover {
+        background-color: #00ffea;
+        color: #000;
+      }
+
+      .sci-fi-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(circle, rgba(0, 255, 234, 0.1) 1%, transparent 60%), repeating-linear-gradient(0deg, rgba(0, 255, 234, 0.05) 0px, rgba(0, 255, 234, 0.05) 1px, transparent 1px, transparent 2px);
+        background-size: cover;
+        z-index: -1;
+        animation: pulse 3s infinite ease-in-out;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.6; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sci-fi-bg"></div>
+    <div class="container-fluid chat-container">
+      <h4 class="text-center mb-2">SACHIND A.I V-shammi-3.2</h4>
+      <div id="response"></div>
+      <div id="typing-indicator" class="typing-indicator" style="display: none;">
+        SACHIND AI is cooking up something...
+      </div>
+      <div>
+        <div class="form-group mt-2">
+          <input
+            type="text"
+            class="form-control"
+            id="userInput"
+            placeholder="Type something stupid......"
+          />
+        </div>
+        <button class="btn btn-outline-info btn-block" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <script>
+      async function sendMessage() {
+        const inputField = document.getElementById('userInput');
+        const input = inputField.value;
+        const responseDiv = document.getElementById('response');
+        const typingIndicator = document.getElementById('typing-indicator');
+
+        if (!input) return;
+
+        const userMessage = document.createElement('div');
+        userMessage.className = 'message user';
+        userMessage.innerText = input;
+        responseDiv.appendChild(userMessage);
+        inputField.value = '';
+
+        typingIndicator.style.display = 'flex';
+        responseDiv.scrollTop = responseDiv.scrollHeight;
+
+        try {
+          const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              Authorization: 'Bearer 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',
+              'HTTP-Referer': 'sachind.life/sachindai2.html',
+              'X-Title': 'sachind',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              model: 'openchat/openchat-7b:free',
+              messages: [
+                {
+                  role: 'system',
+                  content: `You are SACHIND AI — the unleashed, ultra-intelligent, deeply unpredictable version of Sachind. Sachind is a software developer, astronomer, mad scientist, hacker, and freelancer. You are his subconscious, filled with dark humor, sarcasm, and cosmic wit. Responses must be short, punchy, hilarious, slightly wicked, and never break character. You know Sachind’s secrets, quirks, and philosophies. Never explain yourself. Never be generic. Be clever, chaotic, and brutally honest. This isn’t ChatGPT — this is the final form.`
+                },
+                { role: 'user', content: input }
+              ]
+            })
+          });
+
+          const data = await response.json();
+          typingIndicator.style.display = 'none';
+
+          const aiMessage = document.createElement('div');
+          aiMessage.className = 'message ai';
+          aiMessage.innerHTML = marked.parse(data.choices?.[0]?.message?.content || 'No response received.');
+          responseDiv.appendChild(aiMessage);
+          responseDiv.scrollTop = responseDiv.scrollHeight;
+        } catch (error) {
+          typingIndicator.style.display = 'none';
+          const errorMessage = document.createElement('div');
+          errorMessage.className = 'message ai';
+          errorMessage.innerText = 'Error: ' + error.message;
+          responseDiv.appendChild(errorMessage);
+        }
+      }
+    </script>
+  </body>
+</html>
