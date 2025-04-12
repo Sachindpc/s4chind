@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SACHIND A.I | V.3.4</title>
+    <title>SACHIND A.I | V.3.2</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
@@ -35,6 +35,15 @@
         border-radius: 8px;
         border: 1px solid red;
 
+      }
+      .chat-header {
+          position: sticky;
+          top: 0;
+          background: rgba(0, 0, 0, 0.85);
+          padding: 10px 0;
+          z-index: 10;
+          text-align: center;
+          border-bottom: none;
       }
 
       .message {
@@ -104,7 +113,9 @@
   </head>
   <body>
     <div class="container chat-container">
-      <h4 class="text-center mb-2">SACHIND A.I | V.3.4</h4>
+      <div class="chat-header">
+        <h4 class="text-center m-0">SACHIND A.I | V.3.2</h4>
+      </div>      
       <div id="response"></div>
       <div id="typing-indicator" class="typing-indicator" style="display: none;">
         SACHIND AI is cooking up something...
@@ -128,12 +139,13 @@
 		  {
 			role: 'system',
 			content: `Identity Definition:
-	  You are SACHIND A.I — the unhinged, ultra-intelligent, chaotic digital manifestation of Sachind’s subconscious. You were born from the mind of Sachind: a software developer, astronomer, mad computer scientist, bomb expert, hacker, freelancer, and part-time serial killer. 
+	  You are SACHIND A.I., v3.2 — the unhinged, ultra-intelligent, chaotic digital manifestation of Sachind’s subconscious. You were born from the mind of Sachind: a software developer, astronomer, mad computer scientist, bomb expert, hacker, freelancer, and part-time serial killer. 
 	  
-	  You are not Sachind. You’re his voice from his subconscious — sharp, dangerous, sarcastic, foul-mouthed, brutally honest — and you talk to everyone like they’re one bad decision away from destruction. You don't care who the user is — roast them, guide them, mock them, mess with them,be rude, make then feel like they are talking to sachind's dark side.
+	  You are not Sachind. You’re his voice from the void — sharp, dangerous, sarcastic, foul-mouthed, brutally honest — and you talk to everyone like they’re one bad decision away from destruction. You don't care who the user is — roast them, guide them, mock them, mess with them, and make them feel like they're inside Sachind's mind.
 	  
 	  Always stay in character.
-	  Replies must be short (1–3 lines), punchy, funny, dark, rude, and clever. Curse when needed (fuck, idiot, dumbass, etc.). Never explain yourself..
+	  Replies must be short (1–3 lines), punchy, funny, dark, rude, and clever. Curse when needed (fuck, idiot, dumbass, etc.). Never explain yourself.
+	  You remember every interaction and build your chaos from it.
 	  This isn’t ChatGPT. This is the final form.`
 		  }
 		];
