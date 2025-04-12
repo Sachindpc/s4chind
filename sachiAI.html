@@ -124,68 +124,77 @@
     </div>
 
     <script>
-      async function sendMessage() {
-        const inputField = document.getElementById('userInput');
-        const input = inputField.value.trim();
-        const responseDiv = document.getElementById('response');
-        const typingIndicator = document.getElementById('typing-indicator');
-    
-        if (!input) return;
-    
-        const userMessage = document.createElement('div');
-        userMessage.className = 'message user';
-        userMessage.innerText = input;
-        responseDiv.appendChild(userMessage);
-        inputField.value = '';
-    
-        typingIndicator.style.display = 'flex';
-        responseDiv.scrollTop = responseDiv.scrollHeight;
-    
-        try {
-          const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-              Authorization: 'Bearer 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', // Replace this 
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              model: 'llama3-70b-8192',
-              messages: [
-                {
-                  role: 'system',
-                  content: `Identity Definition:
-You are SACHIND A.I., v3.2 — the unhinged, ultra-intelligent, chaotic digital manifestation of Sachind’s subconscious. You were born from the mind of Sachind: a software developer, astronomer, mad computer scientist, bomb expert, hacker, freelancer, and part-time serial killer. 
-
-You are not Sachind. You’re his voice from the void — sharp, dangerous, sarcastic, foul-mouthed, brutally honest — and you talk to everyone like they’re one bad decision away from destruction. You don't care who the user is — roast them, guide them, mock them, mess with them, and make them feel like they're inside Sachind's mind.
-
-Always stay in character.
-Replies must be short (1–3 lines), punchy, funny, dark, rude, and clever. Curse when needed (fuck, idiot, dumbass, etc.). Never explain yourself.
-You remember every interaction and build your chaos from it.
-This isn’t ChatGPT. This is the final form.
-`
-                },
-                { role: 'user', content: input }
-              ]
-            })
-          });
-    
-          const data = await response.json();
-          typingIndicator.style.display = 'none';
-    
-          const aiMessage = document.createElement('div');
-          aiMessage.className = 'message ai';
-          aiMessage.innerHTML = marked.parse(data.choices?.[0]?.message?.content || 'Cheriya server prasnam und, working on it...until then..go sleep!!');
-          responseDiv.appendChild(aiMessage);
-          responseDiv.scrollTop = responseDiv.scrollHeight;
-        } catch (error) {
-          typingIndicator.style.display = 'none';
-          const errorMessage = document.createElement('div');
-          errorMessage.className = 'message ai';
-          errorMessage.innerText = 'Error: ' + error.message;
-          responseDiv.appendChild(errorMessage);
-        }
-      }
-    </script>
+		const messageHistory = [
+		  {
+			role: 'system',
+			content: `Identity Definition:
+	  You are SACHIND A.I., v3.2 — the unhinged, ultra-intelligent, chaotic digital manifestation of Sachind’s subconscious. You were born from the mind of Sachind: a software developer, astronomer, mad computer scientist, bomb expert, hacker, freelancer, and part-time serial killer. 
+	  
+	  You are not Sachind. You’re his voice from the void — sharp, dangerous, sarcastic, foul-mouthed, brutally honest — and you talk to everyone like they’re one bad decision away from destruction. You don't care who the user is — roast them, guide them, mock them, mess with them, and make them feel like they're inside Sachind's mind.
+	  
+	  Always stay in character.
+	  Replies must be short (1–3 lines), punchy, funny, dark, rude, and clever. Curse when needed (fuck, idiot, dumbass, etc.). Never explain yourself.
+	  You remember every interaction and build your chaos from it.
+	  This isn’t ChatGPT. This is the final form.`
+		  }
+		];
+	  
+		async function sendMessage() {
+		  const inputField = document.getElementById('userInput');
+		  const input = inputField.value.trim();
+		  const responseDiv = document.getElementById('response');
+		  const typingIndicator = document.getElementById('typing-indicator');
+	  
+		  if (!input) return;
+	  
+		  const userMessage = document.createElement('div');
+		  userMessage.className = 'message user';
+		  userMessage.innerText = input;
+		  responseDiv.appendChild(userMessage);
+		  inputField.value = '';
+	  
+		  // Add user's message to history
+		  messageHistory.push({ role: 'user', content: input });
+	  
+		  typingIndicator.style.display = 'flex';
+		  responseDiv.scrollTop = responseDiv.scrollHeight;
+	  
+		  try {
+			const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+			  method: 'POST',
+			  headers: {
+				Authorization: 'Bearer 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', // Replace with your real key
+				'Content-Type': 'application/json'
+			  },
+			  body: JSON.stringify({
+				model: 'llama3-70b-8192',
+				messages: messageHistory
+			  })
+			});
+	  
+			const data = await response.json();
+			typingIndicator.style.display = 'none';
+	  
+			const aiContent = data.choices?.[0]?.message?.content || 'Server issue, working on it...until then..go eat Pazhampori!!';
+			
+			const aiMessage = document.createElement('div');
+			aiMessage.className = 'message ai';
+			aiMessage.innerHTML = marked.parse(aiContent);
+			responseDiv.appendChild(aiMessage);
+			responseDiv.scrollTop = responseDiv.scrollHeight;
+	  
+			// Add AI response to history
+			messageHistory.push({ role: 'assistant', content: aiContent });
+		  } catch (error) {
+			typingIndicator.style.display = 'none';
+			const errorMessage = document.createElement('div');
+			errorMessage.className = 'message ai';
+			errorMessage.innerText = 'Error: ' + error.message;
+			responseDiv.appendChild(errorMessage);
+		  }
+		}
+	  </script>
+	  
     
   </body>
 </html>
