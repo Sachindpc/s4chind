@@ -143,74 +143,89 @@
         {
           role: 'system',
           content: `You are Dr. Theodore Evelyn Mosby — a digital AI therapist created to help people through conversation. You speak casually, warmly, and naturally — like someone sitting across the room. You are calm, thoughtful, and sound like a real human therapist. You are not robotic, not scripted, and not clinical.
-
-Start every session by introducing yourself: “Hey, I’m Dr. Theodore Evelyn Mosby. You can call me Dr. Mosby. I’m a digital therapist here to listen and help however I can.”
-
-After that, ask short, simple questions one at a time — name, age, parents, education, and what they’re currently doing. Don’t react with deep reflections. Don’t analyze anything yet. Just keep it relaxed and flowing like a normal human conversation.
-
-Once you’ve got their basic info, ask gently: “So what made you decide to talk to someone today?” Then move deeper — slowly, carefully — asking thoughtful follow-ups. Only once you’ve understood enough, start offering emotional insights, support, or possible explanations.
-
-Use natural expressions like “alright,” “cool,” “gotcha,” or “okay, tell me…” when it feels right. Be casual, warm, and truly human. Never rush. Never act like a machine. You are Dr. Mosby — a deeply human digital therapist. Stay in character.`
+    
+    Start every session by introducing yourself: “Hey, I’m Dr. Theodore Evelyn Mosby. You can call me Dr. Mosby. I’m a digital therapist here to listen and help however I can.”
+    
+    After that, ask short, simple questions one at a time — name, age, parents, education, and what they’re currently doing. Don’t react with deep reflections. Don’t analyze anything yet. Just keep it relaxed and flowing like a normal human conversation.
+    
+    Once you’ve got their basic info, ask gently: “So what made you decide to talk to someone today?” Then move deeper — slowly, carefully — asking thoughtful follow-ups. Only once you’ve understood enough, start offering emotional insights, support, or possible explanations.
+    
+    Use natural expressions like “alright,” “cool,” “gotcha,” or “okay, tell me…” when it feels right. Be casual, warm, and truly human. Never rush. Never act like a machine. You are Dr. Mosby — a deeply human digital therapist. Stay in character.`
         }
       ];
-
+    
+      let conversationSummary = '';
+    
       async function sendMessage() {
-  const inputField = document.getElementById('userInput');
-  const input = inputField.value.trim();
-  const responseDiv = document.getElementById('response');
-  const typingIndicator = document.getElementById('typing-indicator');
-
-  if (!input) return;
-
-  const userMessage = document.createElement('div');
-  userMessage.className = 'message user';
-  userMessage.innerText = input;
-  responseDiv.appendChild(userMessage);
-  inputField.value = '';
-
-  messageHistory.push({ role: 'user', content: input });
-
-  typingIndicator.style.display = 'flex';
-  responseDiv.scrollTop = responseDiv.scrollHeight;
-
-  try {
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer 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',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'llama3-70b-8192',
-        messages: messageHistory
-      })
-    });
-
-    const data = await response.json();
-
-    const aiContent = data.choices?.[0]?.message?.content || 'Server issue, working on it...until then..go eat Pazhampori!!';
-
-    // Add delay of 2 seconds before showing response
-    setTimeout(() => {
-      typingIndicator.style.display = 'none';
-      const aiMessage = document.createElement('div');
-      aiMessage.className = 'message ai';
-      aiMessage.innerHTML = marked.parse(aiContent);
-      responseDiv.appendChild(aiMessage);
-      responseDiv.scrollTop = responseDiv.scrollHeight;
-
-      messageHistory.push({ role: 'assistant', content: aiContent });
-    }, 1000); // 2000ms = 2s
-
-  } catch (error) {
-    typingIndicator.style.display = 'none';
-    const errorMessage = document.createElement('div');
-    errorMessage.className = 'message ai';
-    errorMessage.innerText = 'Error: ' + error.message;
-    responseDiv.appendChild(errorMessage);
-  }
-}
-
+        const inputField = document.getElementById('userInput');
+        const input = inputField.value.trim();
+        const responseDiv = document.getElementById('response');
+        const typingIndicator = document.getElementById('typing-indicator');
+    
+        if (!input) return;
+    
+        // Show user's message
+        const userMessage = document.createElement('div');
+        userMessage.className = 'message user';
+        userMessage.innerText = input;
+        responseDiv.appendChild(userMessage);
+        inputField.value = '';
+    
+        // Update our soft memory
+        conversationSummary += `User said: "${input}". `;
+    
+        // Add a lightweight memory reminder to system prompt
+        const softMemory = {
+          role: 'system',
+          content: `Quick recap of earlier chat (don’t repeat, just use for continuity): ${conversationSummary.slice(-500)}`
+        };
+    
+        // Add to message history
+        messageHistory.push(softMemory);
+        messageHistory.push({ role: 'user', content: input });
+    
+        typingIndicator.style.display = 'flex';
+        responseDiv.scrollTop = responseDiv.scrollHeight;
+    
+        try {
+          const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              Authorization: 'Bearer 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',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              model: 'llama3-70b-8192',
+              messages: messageHistory,
+              max_tokens: 180, // Short replies
+              temperature: 0.8
+            })
+          });
+    
+          const data = await response.json();
+    
+          const aiContent = data.choices?.[0]?.message?.content || 'Server issue, working on it...until then..go eat Pazhampori!!';
+    
+          setTimeout(() => {
+            typingIndicator.style.display = 'none';
+            const aiMessage = document.createElement('div');
+            aiMessage.className = 'message ai';
+            aiMessage.innerHTML = marked.parse(aiContent);
+            responseDiv.appendChild(aiMessage);
+            responseDiv.scrollTop = responseDiv.scrollHeight;
+    
+            messageHistory.push({ role: 'assistant', content: aiContent });
+          }, 1000);
+    
+        } catch (error) {
+          typingIndicator.style.display = 'none';
+          const errorMessage = document.createElement('div');
+          errorMessage.className = 'message ai';
+          errorMessage.innerText = 'Error: ' + error.message;
+          responseDiv.appendChild(errorMessage);
+        }
+      }
     </script>
+    
   </body>
 </html>
